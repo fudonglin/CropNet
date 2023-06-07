@@ -1,1 +1,1 @@
-# CropNet
+# CropNet: An Open Large-Scale Multi-Modal Dataset for Climate Change-aware Crop Yield Predictions
