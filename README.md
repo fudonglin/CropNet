@@ -8,6 +8,34 @@ Precise crop yield predictions are of national importance for ensuring food secu
 
 ## Overview
 
-0ur dataset is composed of three modalities of data, i.e., Sentinel-2 Imagery, WRF-HRRR Computed Dataset, and USDA Crop Dataset, spanning from 2017 to 2022 (i.e., 6 years) across 2291 U.S. counties, with its geographic distribution illustrated below. We also include the number of counties corresponding to each crop type in the USDA Crop Dataset (see the rightmost bar chart in the figure) since crop planting is highly geography-dependent.
+0ur CropNet dataset is composed of three modalities of data, i.e., Sentinel-2 Imagery, WRF-HRRR Computed Dataset, and USDA Crop Dataset, spanning from 2017 to 2022 (i.e., 6 years) across 2291 U.S. counties, with its geographic distribution illustrated below. We also include the number of counties corresponding to each crop type in the USDA Crop Dataset (see the rightmost bar chart in the below figure) since crop planting is highly geography-dependent.
 
 ![Geographic Distribution](images/dataset-geo-overview-violet-pastel.png)
+
+
+
+### Sentinel-2 Imagery
+
+The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-resolution satellite images for monitoring crop growth on the ground. It contains 1284.8 GB of 224x224 RGB satellite images, with a spatial resolution of 9x9 km, and a revisit frequency of 14 days. The following figure depicts satellite images from the Sentinel-2 Imagery under four different revisit dates.
+
+![Sentinel-2 Imagery](images/dataset-Sentinel-2 Imagery.png)
+
+
+
+### WRF-HRRR Computed Dataset
+
+The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily and monthly meteorological parameters, with the former and the latter designed for capturing the direct effects of short-term growing season weather variations on crop growth, and for learning the indirect impacts of long-term climate change on crop yields, respectively.
+
+
+
+
+
+![HRRR Temperature](images/dataset-HRRR-temperature.png)
+
+
+
+### USDA Crop Dataset
+
+
+
+![USDA Corn Yield](images/dataset-corn-yield.png)
