@@ -16,19 +16,15 @@ Precise crop yield predictions are of national importance for ensuring food secu
 
 ### Sentinel-2 Imagery
 
-The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-resolution satellite images for monitoring crop growth on the ground. It contains 1284.8 GB of 224x224 RGB satellite images, with a spatial resolution of 9x9 km, and a revisit frequency of 14 days. The following figure depicts satellite images from the Sentinel-2 Imagery under four different revisit dates.
+The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-resolution satellite images for monitoring crop growth on the ground. It contains 1284.8 GB of 224x224 RGB satellite images, with a spatial resolution of 9x9 km, and a revisit frequency of 14 days. The figures depict satellite images from the Sentinel-2 Imagery under four different revisit dates.
 
-![Sentinel-2 Imagery](images/dataset-Sentinel-2 Imagery.png)
+![Sentinel-2 Imagery](images/dataset-Sentinel-2-Imagery.png)
 
 
 
 ### WRF-HRRR Computed Dataset
 
-The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily and monthly meteorological parameters, with the former and the latter designed for capturing the direct effects of short-term growing season weather variations on crop growth, and for learning the indirect impacts of long-term climate change on crop yields, respectively.
-
-
-
-
+The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily and monthly meteorological parameters, with the former and the latter designed for capturing the direct effects of short-term growing season weather variations on crop growth, and for learning the indirect impacts of long-term climate change on crop yields, respectively. It contains 9 meteorological parameters gridded at 9 km in a one-day (and one-month) interval, arriving at a total size of 35.5GB. The figures show the temperature in Spring, Summer, Fall, and Winter, respectively.
 
 ![HRRR Temperature](images/dataset-HRRR-temperature.png)
 
@@ -36,6 +32,6 @@ The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily a
 
 ### USDA Crop Dataset
 
-
+The USDA Crop Dataset, collected from the USDA Quick Statistic website, offers valuable information, such as production, yield, etc., for crops grown at each available county. It offers crop information for four types of crops at each county-level basis, with a temporal resolution of one year. The figure illustrates the 2022 Corn Yield across the United States.
 
 ![USDA Corn Yield](images/dataset-corn-yield.png)
