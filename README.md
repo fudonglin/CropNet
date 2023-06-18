@@ -17,7 +17,7 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 ![Geographic Distribution](images/dataset-geo-overview-violet-pastel.png)
 
-#### Sentinel-2 Imagery
+### Sentinel-2 Imagery
 
 The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-resolution satellite images for monitoring crop growth on the ground. It contains 224x224 RGB satellite images, with a spatial resolution of 9x9 km, and a revisit frequency of 14 days. The figures depict satellite images from the Sentinel-2 Imagery under four different revisit dates.
 
@@ -25,7 +25,7 @@ The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-reso
 
 
 
-#### WRF-HRRR Computed Dataset
+### WRF-HRRR Computed Dataset
 
 The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily and monthly meteorological parameters, with the former and the latter designed for capturing direct effects of short-term growing season weather variations on crop growth, and for learning indirect impacts of long-term climate change on crop yields, respectively. It contains 9 meteorological parameters gridded at 9 km in a one-day (and one-month) interval. The figures show the temperature in Spring, Summer, Fall, and Winter, respectively.
 
@@ -33,7 +33,7 @@ The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily a
 
 
 
-#### USDA Crop Dataset
+### USDA Crop Dataset
 
 The USDA Crop Dataset, collected from the USDA Quick Statistic website, offers valuable information, such as production, yield, etc., for crops grown at each available county. It offers crop information for four types of crops, i.e., corn, cotton, soybeans, and winter wheat,  at a county-level basis, with a temporal resolution of one year. The figure illustrates the 2022 Corn Yield across the United States.
 
@@ -61,7 +61,7 @@ Notably, one or more modalities of data can be used for specific deep learning t
 
 ### Installation
 
-MacOS and Linux users can install the latest version of CropNet with the following command:
+- MacOS and Linux users can install the latest version of CropNet with the following command:
 
 ```sh
 pip install cropnet
