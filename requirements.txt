@@ -1,0 +1,7 @@
+torch
+torchvision
+numpy
+pandas
+h5py
+Pillow
+einops
