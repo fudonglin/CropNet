@@ -74,6 +74,7 @@ pip install cropnet
 ```python
 import torch
 from torch.utils.data import DataLoader
+from models_mmst_vit import MMST_ViT
 from cropnet.dataset.hrrr_computed_dataset import HRRRComputedDataset
 from cropnet.dataset.sentinel2_imagery import Sentinel2Imagery
 from cropnet.dataset.usda_crop_dataset import USDACropDataset
@@ -84,13 +85,13 @@ base_dir = "/mnt/data/CropNet"
 config_file = "data/soybeans_train.json"
 
 # The dataloader for each modality of data
-sentinel2_loader = DataLoader(Sentinel2Imagery(base_dir, config_file), batch_size=args.batch_size)
-hrrr_loader = DataLoader(HRRRComputedDataset(base_dir, config_file), batch_size=args.batch_size)
-usda_loader = DataLoader(USDACropDataset(base_dir, config_file), batch_size=args.batch_size)
+sentinel2_loader = DataLoader(Sentinel2Imagery(base_dir, config_file), batch_size=1)
+hrrr_loader = DataLoader(HRRRComputedDataset(base_dir, config_file), batch_size=1)
+usda_loader = DataLoader(USDACropDataset(base_dir, config_file), batch_size=1)
 
 # The model, the optimizer, and the loss function
 model = MMST_ViT()
-optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.999))
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, betas=(0.9, 0.999))
 criterion = torch.nn.MSELoss()
 
 # Traning the model for one epoch
