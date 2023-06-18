@@ -111,9 +111,9 @@ criterion = torch.nn.MSELoss()
 
 # Traning the model for one epoch
 for s, h, u in zip(sentinel2_loader, hrrr_loader, usda_loader):
-    # x: satellite images, 
-    # ys (or yl): short-term daily (or long-term monthly) weather parameters, and
-    # z: ground-truth crop yield (or production) respectively
+    # x: satellite images
+    # ys (or yl): short-term daily (or long-term monthly) weather parameters
+    # z: ground-truth crop yield (or production) information
     x, ys, yl, z, = s[0], h[0], h[1], u[0]
     
     optimizer.zero_grad()
