@@ -5,3 +5,4 @@ pandas
 h5py
 Pillow
 einops
+sklearn

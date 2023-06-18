@@ -69,6 +69,47 @@ pip install cropnet
 
 
 
+### A PyTorch Example
+
+```python
+import torch
+from torch.utils.data import DataLoader
+from cropnet.dataset.hrrr_computed_dataset import HRRRComputedDataset
+from cropnet.dataset.sentinel2_imagery import Sentinel2Imagery
+from cropnet.dataset.usda_crop_dataset import USDACropDataset
+
+# The base directory for the CropNet dataset
+base_dir = "/mnt/data/CropNet"
+# The JSON configuration file
+config_file = "data/soybeans_train.json"
+
+# The dataloader for each modality of data
+sentinel2_loader = DataLoader(Sentinel2Imagery(base_dir, config_file), batch_size=args.batch_size)
+hrrr_loader = DataLoader(HRRRComputedDataset(base_dir, config_file), batch_size=args.batch_size)
+usda_loader = DataLoader(USDACropDataset(base_dir, config_file), batch_size=args.batch_size)
+
+# The model, the optimizer, and the loss function
+model = MMST_ViT()
+optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.999))
+criterion = torch.nn.MSELoss()
+
+# Traning the model for one epoch
+for s, h, u in zip(sentinel2_loader, hrrr_loader, usda_loader):
+    # x: satellite images, 
+    # ys (or yl): short-term daily (or long-term montly) weather parameters, and
+    # z: ground-truth crop yield (or production) respectively
+    x, ys, yl, z, = s[0], h[0], h[1], u[0]
+    
+    optimizer.zero_grad()
+    z_hat = model(x, ys, yl)
+    loss = criterion(z, z_hat)
+
+    loss.backward()
+    optimizer.step()
+```
+
+
+
 ## License
 
 CropNet has a [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) license.
