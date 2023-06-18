@@ -6,7 +6,7 @@ from sklearn import preprocessing
 from einops import rearrange
 
 
-class HRRR_Computed_Dataset(torch.utils.data.Dataset):
+class HRRRComputedDataset(torch.utils.data.Dataset):
 
     def __init__(self, base_dir, config_file, column_names=None):
         """

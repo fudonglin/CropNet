@@ -5,7 +5,7 @@ import json
 import pandas as pd
 
 
-class USDA_Crop_Dataset(torch.utils.data.Dataset):
+class USDACropDataset(torch.utils.data.Dataset):
 
     def __init__(self, base_dir, config_file, crop_type="Soybeans"):
         """
