@@ -6,12 +6,23 @@
 
 The CropNet dataset is an open, large-scale, and deep learning-ready dataset, specifically targeting climate change-aware crop yield predictions for the contiguous United States (U.S.) continent at the county level. It is composed of three modalities of data, i.e., Sentinel-2 Imagery, WRF-HRRR Computed Dataset, and USDA Crop Dataset, aligned in both the spatial and temporal domains, for over 2200 U.S. counties spanning 6 years (2017-2022). It is expected to facilitate researchers in developing deep learning models for timely and precisely predicting crop yields at the county level, by accounting for the effects of both short-term growing season weather variations and long-term climate change on crop yields.
 
-- **The dataset is available at [Google Drive](https://drive.google.com/drive/folders/1Js98GAxf1LeAUTxP1JMZZIrKvyJStDgz)**
-- **The `CropNet` package is availbale at [The Python Package Index (PyPI)](https://pypi.org/project/cropnet/)**
-
 
 
 ## Overview
+
+#### The CropNet dataset
+
+- The first *terabyte-sized*, publicly available, and multi-modal dataset for climate change-aware crop yield predictions
+- The `CropNet` dataset is available at [Google Drive](https://drive.google.com/drive/folders/1Js98GAxf1LeAUTxP1JMZZIrKvyJStDgz)
+
+#### The `CropNet` package 
+
+- A *deep learning-ready* Python package for  training model deep neural networks (DNNs) by using the `CropNet` dataset
+- The `CropNet` package is available at [The Python Package Index (PyPI)](https://pypi.org/project/cropnet/)
+
+
+
+## The CropNet Dataset
 
 0ur CropNet dataset is composed of three modalities of data, i.e., Sentinel-2 Imagery, WRF-HRRR Computed Dataset, and USDA Crop Dataset, spanning from 2017 to 2022 (i.e., 6 years) across 2291 U.S. counties, with its geographic distribution illustrated below. We also include the number of counties corresponding to each crop type in the USDA Crop Dataset (see the rightmost bar chart in the figure) since crop planting is highly geography-dependent.
 
@@ -49,7 +60,7 @@ Although our initial goal of crafting the CropNet dataset is for precise crop yi
 
 The code in the `CropNet` package
 
-1. combines all three modalities of data to create $(\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \mathbf{z})$ tuples, with $\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \text{and}~ \mathbf{z}$ representing satellite images, short-term daily whether parameters, long-term monthly meterological parameters, and ground-truth crop yield (or production) inforamtion, resprectively, and
+1. combines all three modalities of data to create $(\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \mathbf{z})$ tuples, with $\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \text{and}~ \mathbf{z}$ representing satellite images, short-term daily whether parameters, long-term monthly meteorological parameters, and ground-truth crop yield (or production) information, respectively, and
 2. exposes those tuples via a `Dataset` object.
 
 Notably, one or more modalities of data can be used for specific deep learning tasks. For example,
@@ -67,9 +78,13 @@ Notably, one or more modalities of data can be used for specific deep learning t
 pip install cropnet
 ```
 
+- Other users can directly utilize the `dataset` package in this repository
 
+  
 
 ### A PyTorch Example
+
+The following code presents a PyTorch example of training a deep learning model for climate change-aware crop yield predictions, by using the CropNet dataset and package:
 
 ```python
 import torch
@@ -84,7 +99,7 @@ base_dir = "/mnt/data/CropNet"
 # The JSON configuration file
 config_file = "data/soybeans_train.json"
 
-# The dataloader for each modality of data
+# The dataloaders for each modality of data
 sentinel2_loader = DataLoader(Sentinel2Imagery(base_dir, config_file), batch_size=1)
 hrrr_loader = DataLoader(HRRRComputedDataset(base_dir, config_file), batch_size=1)
 usda_loader = DataLoader(USDACropDataset(base_dir, config_file), batch_size=1)
@@ -97,7 +112,7 @@ criterion = torch.nn.MSELoss()
 # Traning the model for one epoch
 for s, h, u in zip(sentinel2_loader, hrrr_loader, usda_loader):
     # x: satellite images, 
-    # ys (or yl): short-term daily (or long-term montly) weather parameters, and
+    # ys (or yl): short-term daily (or long-term monthly) weather parameters, and
     # z: ground-truth crop yield (or production) respectively
     x, ys, yl, z, = s[0], h[0], h[1], u[0]
     
