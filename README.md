@@ -10,7 +10,7 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 ## Overview
 
-#### The CropNet dataset
+#### The `CropNet` dataset
 
 - The first *terabyte-sized*, publicly available, and multi-modal dataset for climate change-aware crop yield predictions
 - The `CropNet` dataset is available at [Google Drive](https://drive.google.com/drive/folders/1Js98GAxf1LeAUTxP1JMZZIrKvyJStDgz)
