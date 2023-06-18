@@ -47,7 +47,7 @@ Although our initial goal of crafting the CropNet dataset is for precise crop yi
 
 ### The CropNet Package
 
-The code in this `CropNet` package
+The code in the `CropNet` package
 
 1. combines all three modalities of data to create $(\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \mathbf{z})$ tuples, with $\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \text{and}~ \mathbf{z}$ representing satellite images, short-term daily whether parameters, long-term monthly meterological parameters, and ground-truth crop yield (or production) inforamtion, resprectively, and
 2. exposes those tuples via a `Dataset` object.
