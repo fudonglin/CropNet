@@ -17,7 +17,7 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 #### The `CropNet` package 
 
-- A *deep learning-ready* Python package for  training model deep neural networks (DNNs) by using the `CropNet` dataset
+- A *deep learning-ready* Python package for training deep neural networks (DNNs) by using the `CropNet` dataset
 - The `CropNet` package is available at [The Python Package Index (PyPI)](https://pypi.org/project/cropnet/)
 
 
