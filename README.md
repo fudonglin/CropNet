@@ -28,6 +28,14 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 ![Geographic Distribution](images/dataset-geo-overview-violet-pastel.png)
 
+### Tutorials
+
+The tutorials for our CropNet dataset are avaiable at Google Colab, with their links listed below
+
+- [USDA Crop Dataset Tutorial](https://colab.research.google.com/drive/1U-vFoRyLSb2l2Q67LeGbkUKTeRaHDkkK?usp=sharing)
+
+
+
 ### Sentinel-2 Imagery
 
 The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-resolution satellite images for monitoring crop growth on the ground. It contains 224x224 RGB satellite images, with a spatial resolution of 9x9 km, and a revisit frequency of 14 days. The figures depict satellite images from the Sentinel-2 Imagery under four different revisit dates.
