@@ -22,17 +22,19 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 
 
+## Tutorial
+
+The tutorials for the CropNet dataset are avaiable at Google Colab, with their links listed below
+
+- [USDA Crop Dataset Tutorial](https://colab.research.google.com/drive/1U-vFoRyLSb2l2Q67LeGbkUKTeRaHDkkK?usp=sharing)
+
+
+
 ## The CropNet Dataset
 
 0ur CropNet dataset is composed of three modalities of data, i.e., Sentinel-2 Imagery, WRF-HRRR Computed Dataset, and USDA Crop Dataset, spanning from 2017 to 2022 (i.e., 6 years) across 2291 U.S. counties, with its geographic distribution illustrated below. We also include the number of counties corresponding to each crop type in the USDA Crop Dataset (see the rightmost bar chart in the figure) since crop planting is highly geography-dependent.
 
 ![Geographic Distribution](images/dataset-geo-overview-violet-pastel.png)
-
-### Tutorials
-
-The tutorials for our CropNet dataset are avaiable at Google Colab, with their links listed below
-
-- [USDA Crop Dataset Tutorial](https://colab.research.google.com/drive/1U-vFoRyLSb2l2Q67LeGbkUKTeRaHDkkK?usp=sharing)
 
 
 
