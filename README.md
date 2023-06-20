@@ -8,7 +8,7 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 
 
-## Overview
+## Contribution
 
 #### The `CropNet` dataset
 
@@ -17,14 +17,17 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 #### The `CropNet` package 
 
-- A *deep learning-ready* Python package for training deep neural networks (DNNs) by using the `CropNet` dataset
+- A *deep learning-ready* Python package for facilitating researchers in developing deep neural networks (DNNs) for climate change-aware crop yield predictions
 - The `CropNet` package is available at [The Python Package Index (PyPI)](https://pypi.org/project/cropnet/)
 
 
 
 ## Tutorial
 
-The tutorials for the CropNet dataset are avaiable at Google Colab, with their links listed below
+The tutorials for the CropNet dataset are available at Google Colab, with their links listed below
+
+- Sentinel-2 Imagery Tutorial (release soon)
+- HRRR Computed Dataset Tutorial (release soon)
 
 - [USDA Crop Dataset Tutorial](https://colab.research.google.com/drive/1U-vFoRyLSb2l2Q67LeGbkUKTeRaHDkkK?usp=sharing)
 
