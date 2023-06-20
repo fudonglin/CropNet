@@ -18,7 +18,7 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 #### The `CropNet` package 
 
 - A *deep learning-ready* Python package for facilitating researchers in developing deep neural networks (DNNs) for climate change-aware crop yield predictions
-- The `CropNet` package is available at [The Python Package Index (PyPI)](https://pypi.org/project/cropnet/)
+- The `CropNet` package is available at [Python Package Index (PyPI)](https://pypi.org/project/cropnet/)
 
 
 
