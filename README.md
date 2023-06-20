@@ -26,7 +26,7 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 The tutorials for the CropNet dataset are available at Google Colab, with their links listed below
 
-- Sentinel-2 Imagery Tutorial (release soon)
+- [Sentinel-2 Imagery Tutorial](https://colab.research.google.com/drive/1Tj69JdhO7aX8ks-4UWYvHrFm9GB1PNCd?usp=sharing)
 - HRRR Computed Dataset Tutorial (release soon)
 
 - [USDA Crop Dataset Tutorial](https://colab.research.google.com/drive/1U-vFoRyLSb2l2Q67LeGbkUKTeRaHDkkK?usp=sharing)
