@@ -43,9 +43,15 @@ The tutorials for the CropNet dataset are available at Google Colab, with their 
 
 ### Sentinel-2 Imagery
 
-The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-resolution satellite images for monitoring crop growth on the ground. It contains 224x224 RGB satellite images, with a spatial resolution of 9x9 km, and a revisit frequency of 14 days. The figures depict satellite images from the Sentinel-2 Imagery under four different revisit dates.
+The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-resolution satellite images for monitoring crop growth on the ground. It contains two types of 224x224 RGB satellite images, agriculture imagery (AG) and normalized difference vegetation index (NDVI), both with a spatial resolution of 9x9 km, and a revisit frequency of 14 days. Examples of AG and NDVI images are depicted as follows.
 
-![Sentinel-2 Imagery](images/dataset-Sentinel-2-Imagery.png)
+- **Agriculture Imagery (AG)**
+
+![AG](images/dataset-Sentinel2-AG.png)
+
+- **Normalized Difference Vegetation Index (NDVI)**
+
+![NDVI](images/dataset-Sentinel2-NDVI.png)
 
 
 
