@@ -77,33 +77,80 @@ Although our initial goal of crafting the CropNet dataset is for precise crop yi
 
 ### The CropNet Package
 
-The code in the `CropNet` package
+Beyond the contribution of our CropNet dataset, we also release the CropNet package in the [Python Package Index (PyPI)](https://pypi.org/project/cropnet/) for facilitating researchers in downloading the CropNet data on the fly over the time and region of interest, and flexibly building their deep learning models for accurate crop yield predictions. In particular, the CropNet package includes three types of APIs, listed as follows:
 
-1. combines all three modalities of data to create $(\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \mathbf{z})$ tuples, with $\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \text{and}~ \mathbf{z}$ representing satellite images, short-term daily whether parameters, long-term monthly meteorological parameters, and ground-truth crop yield (or production) information, respectively, and
-2. exposes those tuples via a `Dataset` object.
-
-Notably, one or more modalities of data can be used for specific deep learning tasks. For example,
-
-1. satellite images can be solely utilized for pre-training deep neural networks in a self-supervised learning manner (e.g., [SimCLR](https://arxiv.org/pdf/2002.05709.pdf), [MAE](https://arxiv.org/pdf/2111.06377.pdf), etc.), or
-2. a pair of $(\mathbf{x}, \mathbf{y_{s}})$ under the same 9x9 km grid can be used for exploring the local weather effect on crop growth.
+- **DataDownloader**: This API allows users to download the CropNet data over the time/region of interest on the fly.
+- **DataRetriever**: With this API, users can conveniently obtain the CropNet data stored in the local machine (e.g., if you have downloaded our curated CropNet from the [Google Drive](https://drive.google.com/drive/u/2/folders/1Js98GAxf1LeAUTxP1JMZZIrKvyJStDgz)) over the time/region of interest.
+- **DataLoader**: This API is designed to facilitate users in developing their DNNs for crop yield predictions.
 
 
 
 ### Installation
 
-- MacOS and Linux users can install the latest version of CropNet with the following command:
+Researchers and practitioners can install the latest version of CropNet with the following commands:
 
-```sh
+```python
+# Create and activate a conda environment
+conda create -n cropnet_api python=3.10
+conda activate cropnet_api
+
+# Install the latest version of CropNet
 pip install cropnet
+
+# Slove the ecCodes library dependency issue
+pip install ecmwflibs
 ```
 
-- Other users can directly utilize the `dataset` package in this repository
 
-  
 
-### A PyTorch Example
+### CropNet API Examples
 
-The following code presents a PyTorch example of training a deep learning model for climate change-aware crop yield predictions, by using the CropNet dataset and package:
+- **Example 1: A DataDownloader Example for Downloading the Up-to-date CropNet Data**
+
+  Given the time and region (i.e., the FIPS codes for two U.S. counties) of interest, the following code presents how to utilize the **DataDownloader** to download the up-to-date CropNet data:
+
+```python
+from cropnet.data_downloader import DataDownloader
+
+# Use the "target_dir" to specify where the data should be downloaded to
+downloader = DataDownloader(target_dir="./data")
+
+# Download 2022 USDA Soybean data
+# Note that most of the 2023 USDA data are not yet available
+downloader.download_USDA("Soybean", fips_codes=["10003", "22007"], years=["2022"])
+
+# Download the 2023 (the 1st and 2nd quarters) Sentinel-2 Imagery
+downloader.download_Sentinel2(fips_codes=["10003", "22007"], years=["2023"], image_type="AG")
+
+# Download the 2023 (January to July) WRF-HRRR data
+downloader.download_HRRR(fips_codes=["10003", "22007"], years=["2023"])
+```
+
+
+
+- **Example 2: A DataRetriever Example for Obtaining Our Curated CropNet Data**
+
+  Given the time and region of interest, the following code shows how to use the **DataRetriever** to obtain the CropNet data stored in the local machine in a user-friendly format:
+
+```python
+# Use the "base_fir" to specify where the CropNet data is stored
+retriever = DataRetriever(base_dir="/mnt/data/CropNet")
+   
+# Retrieve the 2022 USDA Soybean data
+usda_data = retriever.retrieve_USDA(crop_type="Soybean", fips_codes=["10003", "22007"], years=["2022"])
+   
+# Retrieve the 2022 Sentinel-2 Imagery data
+sentinel2_data = retriever.retrieve_Sentinel2(fips_codes=["10003", "22007"], years=["2022"], image_type="AG")
+   
+# Retrieve the 2022 WRF-HRRR data
+hrrr_data = retriever.retrieve_HRRR(fips_codes=["10003","22007"], years=["2022"])
+```
+
+
+
+- **Example 3: A PyTorch Example for Using the DataLoader API for Training DNNs** 
+
+The following code presents a PyTorch example of training a deep learning model for climate change-aware crop yield predictions, by utilizing the DataLoader  APIs:
 
 ```python
 import torch
