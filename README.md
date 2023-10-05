@@ -4,11 +4,11 @@
 
 
 
-The CropNet dataset is an open, large-scale, and deep learning-ready dataset, specifically targeting climate change-aware crop yield predictions for the contiguous United States (U.S.) continent at the county level. It is composed of three modalities of data, i.e., Sentinel-2 Imagery, WRF-HRRR Computed Dataset, and USDA Crop Dataset, aligned in both the spatial and temporal domains, for over 2200 U.S. counties spanning 6 years (2017-2022). It is expected to facilitate researchers in developing deep learning models for timely and precisely predicting crop yields at the county level, by accounting for the effects of both short-term growing season weather variations and long-term climate change on crop yields.
+The CropNet dataset is an open, large-scale, and deep learning-ready dataset, specifically targeting climate change-aware crop yield predictions for the contiguous United States (U.S.) continent at the county level. It is composed of three modalities of data, i.e., Sentinel-2 Imagery, WRF-HRRR Computed Dataset, and USDA Crop Dataset, aligned in both the spatial and temporal domains, for over 2200 U.S. counties spanning 6 years (2017-2022). It is expected to facilitate researchers in developing deep learning models for timely and precisely predicting crop yields at the county level, by accounting for the effects of both short-term growing season weather variations and long-term climate change on crop yields. Although our initial goal of crafting the CropNet dataset is for precise crop yield prediction, we believe its future applicability is broad and can benefit the deep learning, agriculture, and meteorology communities, for exploring more interesting, critical, and climate change-related applications, by using one or more modalities of data.
 
 
 
-## Contribution
+## Contributions
 
 #### The `CropNet` dataset
 
@@ -17,12 +17,12 @@ The CropNet dataset is an open, large-scale, and deep learning-ready dataset, sp
 
 #### The `CropNet` package 
 
-- A *deep learning-ready* Python package for facilitating researchers in developing deep neural networks (DNNs) for climate change-aware crop yield predictions
+- A *deep learning-ready* Python package for facilitating researchers in downloading the CropNet data on the fly over the time and region of interest, and developing deep neural networks (DNNs) for climate change-aware crop yield predictions
 - The `CropNet` package is available at [Python Package Index (PyPI)](https://pypi.org/project/cropnet/)
 
 
 
-## Tutorial
+## Tutorials
 
 The tutorials for the CropNet dataset are available at Google Colab, with their links listed below
 
@@ -57,7 +57,7 @@ The Sentinel-2 Imagery, obtained from the Sentinel-2 mission, provides high-reso
 
 ### WRF-HRRR Computed Dataset
 
-The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily and monthly meteorological parameters, with the former and the latter designed for capturing direct effects of short-term growing season weather variations on crop growth, and for learning indirect impacts of long-term climate change on crop yields, respectively. It contains 9 meteorological parameters gridded at 9 km in a one-day (and one-month) interval. The figures show the temperature in Spring, Summer, Fall, and Winter, respectively.
+The WRF-HRRR Computed Dataset, sourced from the WRF-HRRR model, contains daily and monthly meteorological parameters, with the former and the latter designed for capturing direct effects of short-term growing season weather variations on crop growth, and for learning indirect impacts of long-term climate change on crop yields, respectively. It contains 9 meteorological parameters gridded at 9 km in a one-day (and one-month) interval. The figures show the temperature in the spring, the summer, the fall, and the winter, respectively.
 
 ![HRRR Temperature](images/dataset-HRRR-temperature.png)
 
@@ -69,21 +69,17 @@ The USDA Crop Dataset, collected from the USDA Quick Statistic website, offers v
 
 ![USDA Corn Yield](images/dataset-corn-yield.png)
 
-
-
-Although our initial goal of crafting the CropNet dataset is for precise crop yield prediction, we believe its future applicability is broad and can benefit the deep learning, agriculture, and meteorology communities, for exploring more interesting, critical, and climate change-related applications, by using one or more modalities of data.
-
-
-
 ### The CropNet Package
 
-Beyond the contribution of our CropNet dataset, we also release the CropNet package in the [Python Package Index (PyPI)](https://pypi.org/project/cropnet/) for facilitating researchers in downloading the CropNet data on the fly over the time and region of interest, and flexibly building their deep learning models for accurate crop yield predictions. In particular, the CropNet package includes three types of APIs, listed as follows:
+Beyond the contribution of our CropNet dataset, we also release the CropNet package in the Python Package Index (PyPI) for facilitating researchers in downloading the CropNet data based on the time and region of interest, and flexibly building their deep learning models for accurate crop yield predictions. In particular, the CropNet package includes three types of APIs, listed as follows:
 
 - **DataDownloader**: This API allows users to download the CropNet data over the time/region of interest on the fly.
-- **DataRetriever**: With this API, users can conveniently obtain the CropNet data stored in the local machine (e.g., if you have downloaded our curated CropNet from the [Google Drive](https://drive.google.com/drive/u/2/folders/1Js98GAxf1LeAUTxP1JMZZIrKvyJStDgz)) over the time/region of interest.
-- **DataLoader**: This API is designed to facilitate users in developing their DNNs for crop yield predictions.
 
+- **DataRetriever**: With this API, users can conveniently obtain the CropNet data stored in the local machine (e.g., if you have downloaded our curated CropNet from Google Drive) over the time/region of interest.
 
+- **DataLoader**: This API is designed to facilitate researchers in developing their DNNs for accurate crop yield predictions. Specifically, the code in this API ( 1) combines all three modalities of data to create $(\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \mathbf{z})$ tuples, with $\mathbf{x}, \mathbf{y_{s}}, \mathbf{y_{l}}, \text{and}~ \mathbf{z}$, respectively representing satellite images, short-term daily whether parameters, long-term monthly meteorological parameters, and ground-truth crop yield (or production) information, and then (2) exposes those tuples via a `Dataset` object after appropriate data pre-processing techniques. 
+
+  
 
 ### Installation
 
@@ -121,6 +117,7 @@ downloader.download_USDA("Soybean", fips_codes=["10003", "22007"], years=["2022"
 
 # Download the 2023 (the 1st and 2nd quarters) Sentinel-2 Imagery
 downloader.download_Sentinel2(fips_codes=["10003", "22007"], years=["2023"], image_type="AG")
+downloader.download_Sentinel2(fips_codes=["10003", "22007"], years=["2023"], image_type="NDVI")
 
 # Download the 2023 (January to July) WRF-HRRR data
 downloader.download_HRRR(fips_codes=["10003", "22007"], years=["2023"])
@@ -141,6 +138,7 @@ usda_data = retriever.retrieve_USDA(crop_type="Soybean", fips_codes=["10003", "2
    
 # Retrieve the 2022 Sentinel-2 Imagery data
 sentinel2_data = retriever.retrieve_Sentinel2(fips_codes=["10003", "22007"], years=["2022"], image_type="AG")
+sentinel2_data = retriever.retrieve_Sentinel2(fips_codes=["10003", "22007"], years=["2022"], image_type="NDVI")
    
 # Retrieve the 2022 WRF-HRRR data
 hrrr_data = retriever.retrieve_HRRR(fips_codes=["10003","22007"], years=["2022"])
@@ -150,7 +148,7 @@ hrrr_data = retriever.retrieve_HRRR(fips_codes=["10003","22007"], years=["2022"]
 
 - **Example 3: A PyTorch Example for Using the DataLoader API for Training DNNs** 
 
-The following code presents a PyTorch example of training a deep learning model for climate change-aware crop yield predictions, by utilizing the DataLoader  APIs:
+The following code presents a PyTorch example of training a deep learning model (i.e., MMST-ViT) for climate change-aware crop yield predictions, by utilizing the DataLoader  APIs:
 
 ```python
 import torch
